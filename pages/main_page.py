@@ -7,7 +7,7 @@ import allure
 
 class MainPage(BasePage):
     @allure.step('Скролл страницы до вопросов')
-    def scroll_page_down(self):
+    def scroll_page_down_to_questions_list(self):
         BasePage.scroll_to_element(self, By.CSS_SELECTOR, MainPageLocators.questions)
 
     @allure.step('Клик по вопросу {question}')
@@ -27,7 +27,6 @@ class MainPage(BasePage):
     @allure.step('Проверка перехода на страницу Яндекс Дзен')
     def check_redirect_to_dzen(self):
         BasePage.switch_to_next_window(self)
-        BasePage.wait_for_url(self, 'dzen')
         BasePage.wait_for_element(self, By.XPATH, YandexDzenLocators.page_header)
         if (BasePage.check_for_element_visible(self, By.XPATH, YandexDzenLocators.page_header) is True and
                 BasePage.get_current_url(self) == DZEN_URL):

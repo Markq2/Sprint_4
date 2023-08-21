@@ -17,7 +17,7 @@ class TestMainPage:
                                                   (8, ANSWERS['8answer'])])
     def test_check_answers_on_main_page(self, driver, question, answer):
         main_page = MainPage(driver)
-        main_page.scroll_page_down()
+        main_page.scroll_page_down_to_questions_list()
         main_page.question_click(question)
         assert answer == main_page.get_answer_text(question), "Ответ не соответствует ожидаемому"
 

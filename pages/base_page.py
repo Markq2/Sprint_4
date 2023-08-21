@@ -44,11 +44,3 @@ class BasePage:
 
     def press_button(self, by, locator, button):
         self.driver.find_element(by, locator).send_keys(button)
-
-    def wait_for_url(self, url):
-        if url == 'dzen':
-            WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(DZEN_URL))
-        elif url == 'ORDER_PAGE_URL':
-            WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(ORDER_PAGE_URL))
-        elif url == 'MAIN_PAGE_URL':
-            WebDriverWait(self.driver, 3).until(expected_conditions.url_to_be(MAIN_PAGE_URL))

@@ -12,11 +12,9 @@ class OrderPage(BasePage):
     def click_order_by_button(self, button):
         if button == 'header':
             BasePage.click(self, By.XPATH, HeaderLocators.header_order_button)
-            BasePage.wait_for_url(self, ORDER_PAGE_URL)
         elif button == 'footer':
             BasePage.scroll_to_element(self, By.XPATH, MainPageLocators.footer_order_button)
             BasePage.click(self, By.XPATH, MainPageLocators.footer_order_button)
-            BasePage.wait_for_url(self, ORDER_PAGE_URL)
 
     @allure.step('Заполнить поле Имя')
     def set_name_input(self):
@@ -86,7 +84,6 @@ class OrderPage(BasePage):
     @allure.step('Проверка перехода на главную страницу Самоката при клике по логотипу в шапке сайта')
     def check_redirect_to_samokat_main_page(self):
         self.click_on_yandex_logo()
-        BasePage.wait_for_url(self, 'MAIN_PAGE_URL')
         BasePage.wait_for_element(self, By.XPATH, HeaderLocators.header_order_button)
         if (BasePage.get_current_url(self) == MAIN_PAGE_URL and
                 BasePage.check_for_element_visible(self, By.XPATH, HeaderLocators.header_order_button) is True):
